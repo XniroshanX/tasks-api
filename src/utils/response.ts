@@ -7,18 +7,22 @@ export const makeResponse = (
   message: string = "",
   data: unknown = []
 ) => {
-  response.send({ status, message, data });
+  response.status(status).send({ status, message, data });
 };
 
-export const success = (response: Response, message: string, data: unknown) => {
+export const success = (
+  response: Response,
+  message: string,
+  data?: unknown
+) => {
   makeResponse(response, HttpCode.SUCCESS, message, data);
 };
 
 export const fail = (
   response: Response,
-  status: HttpCode.VALIDATION_ERROR,
+  status: HttpCode,
   message: string,
-  data: unknown
+  data?: unknown
 ) => {
   makeResponse(response, status, message, data);
 };

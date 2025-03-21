@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { createTask } from "../services/task";
+import { success } from "../utils/response";
 
 export const create = (request: Request, response: Response) => {
   const { title, description, status, createdAt, updatedAt } = request.body;
@@ -14,17 +15,17 @@ export const create = (request: Request, response: Response) => {
 };
 
 export const getAll = (request: Request, response: Response) => {
-  response.send({ status: "getAll" });
+  success(response, "Successfully fetched");
 };
 
 export const getById = (request: Request, response: Response) => {
-  response.send({ status: "getById" });
+  success(response, "Successfully fetched by Id");
 };
 
 export const update = (request: Request, response: Response) => {
-  response.send({ status: "update" });
+  success(response, "Successfully updated");
 };
 
 export const remove = (request: Request, response: Response) => {
-  response.send({ status: "remove" });
+  success(response, "Successfully removed");
 };
