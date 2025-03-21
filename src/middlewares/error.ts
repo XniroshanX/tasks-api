@@ -1,11 +1,9 @@
-import { NextFunction, Request, Response } from "express";
-import { TokenExpiredError } from "jsonwebtoken";
+import { Request, Response } from "express";
 
 export const errorHandler = (
   err: Error,
   request: Request,
-  response: Response,
-  next: NextFunction
+  response: Response
 ) => {
   response.send(err);
 };
