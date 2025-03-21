@@ -14,17 +14,17 @@ export const create = (request: Request, response: Response) => {
 };
 
 export const getAll = (request: Request, response: Response) => {
-  response.send({ status: 'getAll' });
+  response.send({ status: "getAll" });
 };
 
 export const getById = (request: Request, response: Response) => {
-  response.send({ status: 1 });
+  response.send({ status: "getById" });
 };
 
 export const update = (request: Request, response: Response) => {
-  response.send({ status: 1 });
+  response.send({ status: "update" });
 };
 
 export const remove = (request: Request, response: Response) => {
-  response.send({ status: 1 });
+  response.send({ status: "remove" });
 };
