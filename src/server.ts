@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
 import { errorHandler } from "./middlewares/error";
-import "dotenv/config";
+import config from "./config";
 
-const port = process.env.PORT;
+const port = config.PORT;
 const app = express();
 
 app.use(cors());
