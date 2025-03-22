@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createTask } from "../services/task";
+import { createTask, getAllTasks, getTaskByID } from "../services/task";
 import { success } from "../utils/response";
 import { asyncHandler } from "../utils/handlers";
 
@@ -13,20 +13,22 @@ export const create = asyncHandler(
       createdAt,
       updatedAt,
     });
-    console.log("🚀 ~ taskCreated:", taskCreated)
-    response.send({ status: taskCreated });
+    success(response, "Task created successfully", { status: taskCreated });
   }
 );
 
 export const getAll = asyncHandler(
   async (request: Request, response: Response) => {
-    success(response, "Successfully fetched");
+    const tasks = await getAllTasks();
+    success(response, "Successfully fetched", tasks);
   }
 );
 
 export const getById = asyncHandler(
   async (request: Request, response: Response) => {
-    success(response, "Successfully fetched by Id");
+    const taskId = request.params.id;
+    const task = await getTaskByID(taskId);
+    success(response, "Successfully fetched by Id", task);
   }
 );
 

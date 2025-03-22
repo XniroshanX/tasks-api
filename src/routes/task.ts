@@ -10,8 +10,8 @@ import { validate } from "../middlewares/validation";
 const router = Router();
 
 router.post("/", taskCreationValidations, validate, create);
-router.get("/", getAll);
 router.get("/:id", taskIdValidations, validate, getById);
+router.get("/", getAll);
 router.put("/:id", taskUpdateValidations, validate, update);
 router.delete("/:id", taskDeleteValidations, validate, remove);
 
