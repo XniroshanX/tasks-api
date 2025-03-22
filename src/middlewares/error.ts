@@ -11,7 +11,7 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   if (error instanceof HttpError || error instanceof ConnectionError) {
-    fail(response, error.code, error.message || "Something went wrong");
+    return fail(response, error.code, error.message || "Something went wrong");
   }
 
   fail(

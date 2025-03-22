@@ -7,7 +7,7 @@ export const makeResponse = (
   message: string = "",
   data: unknown = []
 ) => {
-  response.status(status).send({ status, message, data });
+  return response.status(status).send({ status, message, data });
 };
 
 export const success = (
