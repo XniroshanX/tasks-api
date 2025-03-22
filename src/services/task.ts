@@ -1,6 +1,7 @@
 import { Task } from "../types/tasks";
+import { create } from "../models/tasks";
+import { randomUUID } from "crypto";
 
-export const createTask = (taskData: Task) => {
-  console.log(taskData);
-  return true;
+export const createTask = async (taskData: Task) => {
+  return await create({ id: randomUUID(), ...taskData });
 };

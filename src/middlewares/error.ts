@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { HttpCode } from "../constants/http";
 import HttpError from "../errors/http";
 import { fail } from "../utils/response";
+import ConnectionError from "../errors/connection";
 
 export const errorHandler = (
   error: Error,
@@ -9,13 +10,14 @@ export const errorHandler = (
   response: Response,
   next: NextFunction
 ) => {
-  if (error instanceof HttpError) {
+  if (error instanceof HttpError || error instanceof ConnectionError) {
     fail(response, error.code, error.message || "Something went wrong");
   }
 
-  response.status(HttpCode.SERVER_ERROR).json({
-    status: false,
-    message: error.message || "Internal Server Error",
-  });
+  fail(
+    response,
+    HttpCode.SERVER_ERROR,
+    `Internal server error. ${error.message}`
+  );
   next();
 };
