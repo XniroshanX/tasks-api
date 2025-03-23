@@ -6,11 +6,11 @@ import {
   updateByID,
   removeTaskById,
 } from "../models/tasks";
-import { randomUUID } from "crypto";
 import HttpError from "../errors/http";
+import { generateUuid } from "../utils/uuid";
 
 export const createTask = async (taskData: Task) => {
-  return await create({ id: randomUUID(), ...taskData });
+  return await create({ id: generateUuid(), ...taskData });
 };
 
 export const getAllTasks = async () => {
