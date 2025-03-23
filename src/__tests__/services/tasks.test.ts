@@ -23,7 +23,14 @@ import {
 
 describe("Tasks", () => {
   const dynamoMock = mockClient(DynamoDBDocumentClient);
+
   beforeAll(() => {
+    // Mock process envs
+    process.env.PORT = "8000";
+    process.env.AWS_REGION = "us-east-1";
+    process.env.AWS_ACCESS_KEY_ID = "test-access-key";
+    process.env.AWS_SECRET_ACCESS_KEY = "test-secret-key";
+
     jest.mock("@aws-sdk/lib-dynamodb", () => {
       return {
         DynamoDBClient: jest.fn(),
