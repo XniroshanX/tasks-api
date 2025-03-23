@@ -3,8 +3,8 @@ export type Task = {
   title: string;
   description: string;
   status: TaskStatus;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | string;
+  updatedAt: Date | string;
 };
 
 export enum TaskStatus {
