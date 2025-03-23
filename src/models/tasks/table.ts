@@ -19,11 +19,9 @@ export const createTableIfNotExist = async (client: DynamoDBClient) => {
     };
     const command = new CreateTableCommand(params);
     await client.send(command);
-    console.log("Table created successfully");
     return;
   } catch (error) {
     if (error instanceof ResourceInUseException) {
-      console.log("Table already created");
       return;
     }
     throw error;

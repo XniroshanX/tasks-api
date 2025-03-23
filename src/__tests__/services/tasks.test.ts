@@ -21,8 +21,18 @@ import {
   UpdateItemCommand,
 } from "@aws-sdk/client-dynamodb";
 
-describe("Tasks", async () => {
+describe("Tasks", () => {
   const dynamoMock = mockClient(DynamoDBDocumentClient);
+  beforeAll(() => {
+    jest.mock("@aws-sdk/lib-dynamodb", () => {
+      return {
+        DynamoDBClient: jest.fn(),
+        CreateTableCommand: jest.fn(),
+        ResourceInUseException: class extends Error {},
+      };
+    });
+  });
+
   beforeEach(() => {
     dynamoMock.reset();
   });
