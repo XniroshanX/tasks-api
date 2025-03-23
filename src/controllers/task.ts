@@ -26,7 +26,6 @@ export const create = asyncHandler(
 export const getAll = asyncHandler(
   async (request: Request, response: Response) => {
     const tasks = await getAllTasks();
-    console.log("🚀 ~ tasks:", tasks)
     success(response, "Successfully fetched", tasks);
   }
 );

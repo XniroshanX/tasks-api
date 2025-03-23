@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+      AWS_REGION: ap-south-1
+      AWS_ACCESS_KEY_ID: AKIATQZCSAX3GY4PDMPK
+      AWS_SECRET_ACCESS_KEY: 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
+    env_file:
+      - .env
