@@ -20,17 +20,34 @@ import {
   GetItemCommand,
   UpdateItemCommand,
 } from "@aws-sdk/client-dynamodb";
+import config from "../../config";
+
+jest.mock("dotenv", () => ({
+  config: jest.fn(),
+}));
+
+// const mockConfig = ;
+
+jest.mock("../../config", () => ({
+  PORT: "8000",
+  AWS_REGION: "us-east-1",
+  AWS_ACCESS_KEY_ID: "mock-access-key",
+  AWS_SECRET_ACCESS_KEY: "mock-secret-key",
+}));
+
+describe("Configuration", () => {
+  it("should have mocked config values", () => {
+    expect(config.PORT).toBe("8000");
+    expect(config.AWS_REGION).toBe("us-east-1");
+    expect(config.AWS_ACCESS_KEY_ID).toBe("mock-access-key");
+    expect(config.AWS_SECRET_ACCESS_KEY).toBe("mock-secret-key");
+  });
+});
 
 describe("Tasks", () => {
   const dynamoMock = mockClient(DynamoDBDocumentClient);
 
   beforeAll(() => {
-    // Mock process envs
-    process.env.PORT = "8000";
-    process.env.AWS_REGION = "us-east-1";
-    process.env.AWS_ACCESS_KEY_ID = "test-access-key";
-    process.env.AWS_SECRET_ACCESS_KEY = "test-secret-key";
-
     jest.mock("@aws-sdk/lib-dynamodb", () => {
       return {
         DynamoDBClient: jest.fn(),
