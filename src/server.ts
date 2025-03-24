@@ -13,6 +13,11 @@ app.use(express.json());
 
 app.use("/api/tasks", taskRoute);
 app.use("/api/users", userRoute);
+
+/**
+ *  Error handler will goes to bottom of the routes
+ *  otherwise it won't work with routes
+ */
 app.use(errorHandler);
 
 app.listen(port, () => {

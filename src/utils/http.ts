@@ -1,5 +1,9 @@
 import axios from "axios";
 
+/**
+ * Creating axios client is helpfull to manage
+ * configuration for http request in one place.
+ */
 const axiosClient = axios.create({
   timeout: 10000,
   headers: {

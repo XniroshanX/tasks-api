@@ -9,6 +9,12 @@ import {
 import { success } from "../utils/response";
 import { asyncHandler } from "../utils/handlers";
 
+/**
+ * All controller functions use asyncHandler,
+ * so it's not necessary to call next()
+ * when throwing an error.
+ */
+
 export const create = asyncHandler(
   async (request: Request, response: Response) => {
     const { title, description, status, createdAt, updatedAt } = request.body;

@@ -1,7 +1,9 @@
 import * as dotenv from "dotenv";
 
+// Load environment variables from a .env file into process.env
 dotenv.config();
 
+// Define a TypeScript type for the configuration object
 type Config = {
   PORT: string;
   AWS_REGION: string;

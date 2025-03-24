@@ -4,6 +4,12 @@ import HttpError from "../errors/http";
 import { fail } from "../utils/response";
 import ConnectionError from "../errors/connection";
 
+/**
+ * This is a error handler middleware for express
+ * This will handle all the errors across
+ * the application
+ * 
+*/
 export const errorHandler = (
   error: Error,
   request: Request,

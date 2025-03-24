@@ -5,6 +5,11 @@ import {
 } from "@aws-sdk/client-dynamodb";
 import { taskAttributeDefinition, taskSchema } from "./schema";
 
+/**
+ * 
+ * This is a script for check the table is created or not in the dynamoDB service.
+ * 
+ */
 export const createUserTableIfNotExist = async (client: DynamoDBClient) => {
   try {
     const params = {

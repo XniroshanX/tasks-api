@@ -22,11 +22,13 @@ import {
 } from "@aws-sdk/client-dynamodb";
 import config from "../../config";
 
+/**
+ * Mocking both dotenv and configuration module
+ */
+
 jest.mock("dotenv", () => ({
   config: jest.fn(),
 }));
-
-// const mockConfig = ;
 
 jest.mock("../../config", () => ({
   PORT: "8000",
@@ -48,6 +50,9 @@ describe("Tasks", () => {
   const dynamoMock = mockClient(DynamoDBDocumentClient);
 
   beforeAll(() => {
+    /**
+     * This will prevent the dynamodb connection initialization in models
+     */
     jest.mock("@aws-sdk/lib-dynamodb", () => {
       return {
         DynamoDBClient: jest.fn(),
@@ -58,6 +63,7 @@ describe("Tasks", () => {
   });
 
   beforeEach(() => {
+    // reset mocks everytime a test case finished
     dynamoMock.reset();
   });
 

@@ -1,6 +1,9 @@
 import { generateUuid } from "../../utils/crypto";
 import { randomUUID } from "crypto";
 
+/**
+ * Mock the randomUUID in crypto module
+ */
 jest.mock("crypto", () => ({
   randomUUID: jest.fn(),
 }));

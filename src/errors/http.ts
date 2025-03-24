@@ -1,5 +1,10 @@
 import { HttpCode } from "../constants/http";
 
+/**
+ * This is an Http Error class for throw http
+ * request related errors
+ * 
+ */
 class HttpError extends Error {
   code: HttpCode;
   constructor(

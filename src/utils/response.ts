@@ -1,6 +1,16 @@
 import { Response } from "express";
 import { HttpCode } from "../constants/http";
 
+/**
+ * 
+ *  Below http utilities are helpful to maintain
+ *  consistent http response structure across
+ *  the application
+ * 
+ */
+
+
+// General response function
 export const makeResponse = (
   response: Response,
   status: HttpCode,
@@ -10,6 +20,7 @@ export const makeResponse = (
   return response.status(status).send({ status, message, data });
 };
 
+// The success function which send success response
 export const success = (
   response: Response,
   message: string,
@@ -18,6 +29,7 @@ export const success = (
   makeResponse(response, HttpCode.SUCCESS, message, data);
 };
 
+// The success function which send failure response
 export const fail = (
   response: Response,
   status: HttpCode,
