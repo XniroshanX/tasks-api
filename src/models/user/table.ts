@@ -3,12 +3,12 @@ import {
   DynamoDBClient,
   ResourceInUseException,
 } from "@aws-sdk/client-dynamodb";
-import { taskAttributeDefinition, taskSchema } from "../user/schema";
+import { taskAttributeDefinition, taskSchema } from "./schema";
 
-export const createTaskTableIfNotExist = async (client: DynamoDBClient) => {
+export const createUserTableIfNotExist = async (client: DynamoDBClient) => {
   try {
     const params = {
-      TableName: "tasks",
+      TableName: "users",
       AttributeDefinitions: taskAttributeDefinition,
       KeySchema: taskSchema,
       BillingMode: "PROVISIONED" as const,

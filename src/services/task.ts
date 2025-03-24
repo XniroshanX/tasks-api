@@ -7,7 +7,7 @@ import {
   removeTaskById,
 } from "../models/tasks";
 import HttpError from "../errors/http";
-import { generateUuid } from "../utils/uuid";
+import { generateUuid } from "../utils/crypto";
 
 export const createTask = async (taskData: Task) => {
   return await create({ id: generateUuid(), ...taskData });

@@ -2,7 +2,8 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 import config from "../config";
 import ConnectionError from "../errors/connection";
-import { createTableIfNotExist } from "../models/tasks/table";
+import { createTaskTableIfNotExist } from "../models/tasks/table";
+import { createUserTableIfNotExist } from "../models/user/table";
 
 const initClient = () => {
   try {
@@ -14,7 +15,8 @@ const initClient = () => {
       },
     });
 
-    createTableIfNotExist(client);
+    createTaskTableIfNotExist(client);
+    createUserTableIfNotExist(client);
 
     const docClient = DynamoDBDocumentClient.from(client);
     return { client, docClient };

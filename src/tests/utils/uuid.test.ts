@@ -1,4 +1,4 @@
-import { generateUuid } from "../../utils/uuid"; // Replace with actual file path
+import { generateUuid } from "../../utils/crypto";
 import { randomUUID } from "crypto";
 
 jest.mock("crypto", () => ({
